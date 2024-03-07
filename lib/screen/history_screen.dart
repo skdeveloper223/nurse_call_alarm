@@ -10,10 +10,10 @@ class HistoryScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Call History')),
+      appBar: AppBar(title: const Text('Call History')),
       body: Obx(
         () => controller.histories.isEmpty
-            ? Center(
+            ? const Center(
                 child: Text("No Data Found"),
               )
             : ListView.builder(
@@ -21,8 +21,8 @@ class HistoryScreen extends StatelessWidget {
                 itemBuilder: (context, index) {
                   Emergency emergency = controller.histories[index];
                   return ListTile(
-                    title: Text('User Name: ${emergency.type}'),
-                    subtitle: Text('Details: ${emergency.details}'),
+                    title: Text('User email: ${emergency.type}'),
+                    subtitle: Text(emergency.details),
                   );
                 },
               ),

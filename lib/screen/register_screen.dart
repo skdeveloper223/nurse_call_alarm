@@ -9,26 +9,26 @@ class RegisterScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Register')),
+      appBar: AppBar(title: const Text('Register')),
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.all(20.0),
+          padding: const EdgeInsets.all(20.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               TextFormField(
-                decoration: InputDecoration(labelText: 'Email'),
+                decoration: const InputDecoration(labelText: 'Email'),
                 keyboardType: TextInputType.emailAddress,
                 onChanged: (value) => authController.email = value,
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               TextFormField(
-                decoration: InputDecoration(labelText: 'Password'),
+                decoration: const InputDecoration(labelText: 'Password'),
                 obscureText: true,
                 onChanged: (value) => authController.password = value,
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               DropdownButtonFormField<String>(
                 value: authController.userType,
                 items: <String>['Patient', 'Nurse'].map((String value) {
@@ -38,21 +38,21 @@ class RegisterScreen extends StatelessWidget {
                   );
                 }).toList(),
                 onChanged: (value) => authController.userType = value!,
-                decoration: InputDecoration(labelText: 'User Type'),
+                decoration: const InputDecoration(labelText: 'User Type'),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
                   authController.register();
                 },
-                child: Text('Register'),
+                child: const Text('Register'),
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               TextButton(
                 onPressed: () {
                   Get.back();
                 },
-                child: Text('Already have an account? Sign In'),
+                child: const Text('Already have an account? Sign In'),
               ),
             ],
           ),

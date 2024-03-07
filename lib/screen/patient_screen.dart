@@ -10,13 +10,13 @@ class PatientScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Patient Home'),
+        title: const Text('Patient Home'),
         actions: [
           IconButton(
               onPressed: () {
                 controller.auth.signOut();
               },
-              icon: Icon(Icons.logout))
+              icon: const Icon(Icons.logout))
         ],
       ),
       body: Center(
@@ -25,7 +25,7 @@ class PatientScreen extends StatelessWidget {
           children: [
             ElevatedButton(
               onPressed: () => controller.createEmergency('Emergency Type', 'Emergency Required'),
-              child: Text('Generate Emergency'),
+              child: const Text('Generate Emergency'),
             ),
           ],
         ),

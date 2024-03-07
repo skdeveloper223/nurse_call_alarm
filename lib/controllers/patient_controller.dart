@@ -13,7 +13,7 @@ class PatientController extends GetxController {
     String userId = _authController.firebaseUser.value!.uid;
     String email = _authController.firebaseUser.value!.email!;
     print(_authController.firebaseUser.value.toString());
-    Emergency emergency = Emergency(userId: userId, type: email, details: details);
+    Emergency emergency = Emergency(userId: userId, type: email, details: details, id: '${DateTime.now().microsecondsSinceEpoch}');
     await _db.createEmergency(emergency);
     Get.snackbar('Emergency', "Send Successfully", snackPosition: SnackPosition.BOTTOM);
   }

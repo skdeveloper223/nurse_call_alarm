@@ -39,6 +39,8 @@ dependencies:
   firebase_auth:
   cloud_firestore: ^3.1.7
   get:
+  just_audio:
+
 
 dependency_overrides:
   firebase_core_platform_interface: 4.5.1
