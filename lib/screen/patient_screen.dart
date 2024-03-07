@@ -14,7 +14,7 @@ class PatientScreen extends StatelessWidget {
         actions: [
           IconButton(
               onPressed: () {
-                controller.auth!.signOut();
+                controller.auth.signOut();
               },
               icon: Icon(Icons.logout))
         ],
@@ -24,7 +24,7 @@ class PatientScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             ElevatedButton(
-              onPressed: () => controller.createEmergency('Emergency Type', 'Emergency Details'),
+              onPressed: () => controller.createEmergency('Emergency Type', 'Emergency Required'),
               child: Text('Generate Emergency'),
             ),
           ],

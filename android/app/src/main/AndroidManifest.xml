@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.nurse.call.nurse_call_alarm">
     <application
-        android:label="nurse_call_alarm"
+        android:label="Nurse Call Alarm"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

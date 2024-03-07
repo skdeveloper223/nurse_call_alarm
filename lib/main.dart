@@ -6,8 +6,10 @@ import 'package:nurse_call_alarm/screen/patient_screen.dart';
 import 'package:nurse_call_alarm/screen/register_screen.dart';
 
 import 'controllers/auth_controller.dart';
+import 'controllers/history_controller.dart';
 import 'controllers/nurse_controller.dart';
 import 'controllers/patient_controller.dart';
+import 'screen/history_screen.dart';
 import 'screen/nurse_screen.dart';
 
 Future<void> main() async {
@@ -23,6 +25,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      title: "Nurse Call Alarm",
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
       getPages: [
@@ -46,6 +49,13 @@ class MyApp extends StatelessWidget {
           page: () => NurseScreen(),
           binding: BindingsBuilder(() {
             Get.put<NurseController>(NurseController());
+          }),
+        ),
+        GetPage(
+          name: '/history',
+          page: () => HistoryScreen(),
+          binding: BindingsBuilder(() {
+            Get.put<HistoryController>(HistoryController());
           }),
         ),
       ],
