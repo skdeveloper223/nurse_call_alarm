@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import '../controllers/auth_controller.dart';
 
 class LoginScreen extends StatelessWidget {
-  final AuthController authController = Get.put<AuthController>(AuthController());
+  final AuthController authController = Get.find();
 
   @override
   Widget build(BuildContext context) {

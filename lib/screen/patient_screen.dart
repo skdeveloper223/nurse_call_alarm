@@ -9,13 +9,22 @@ class PatientScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Patient Home')),
+      appBar: AppBar(
+        title: Text('Patient Home'),
+        actions: [
+          IconButton(
+              onPressed: () {
+                controller.auth!.signOut();
+              },
+              icon: Icon(Icons.logout))
+        ],
+      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             ElevatedButton(
-              onPressed: () => controller.createEmergency('Emergency Type', controller.auth.firebase.value.name),
+              onPressed: () => controller.createEmergency('Emergency Type', 'Emergency Details'),
               child: Text('Generate Emergency'),
             ),
           ],

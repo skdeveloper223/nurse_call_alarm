@@ -10,7 +10,16 @@ class NurseScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Nurse Home')),
+      appBar: AppBar(
+        title: Text('Nurse Home'),
+        actions: [
+          IconButton(
+              onPressed: () {
+                controller.auth!.signOut();
+              },
+              icon: Icon(Icons.logout))
+        ],
+      ),
       body: Obx(
         () => ListView.builder(
           itemCount: controller.emergencies.length,

@@ -7,6 +7,7 @@ import 'auth_controller.dart';
 class NurseController extends GetxController {
   final DatabaseService _db = DatabaseService();
   final AuthController _authController = Get.find();
+  get auth => _authController;
 
   final RxList<Emergency> emergencies = <Emergency>[].obs;
 
@@ -19,7 +20,7 @@ class NurseController extends GetxController {
   void fetchEmergencies() async {
     String userId = _authController.firebaseUser.value!.uid;
     _db.streamEmergencies(userId).listen((data) {
-      emergencies.assignAll(data as Iterable<Emergency>);
+      emergencies.value = data.cast<Emergency>();
     });
     print(emergencies.toString());
   }

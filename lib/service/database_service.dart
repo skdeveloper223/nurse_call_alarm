@@ -1,8 +1,18 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:nurse_call_alarm/models/emergency.dart';
 
+import '../models/user.dart';
+
 class DatabaseService {
   final FirebaseFirestore _db = FirebaseFirestore.instance;
+
+  Future<void> createUser(UserModel user) async {
+    await _db.collection('user').add({
+      'id': user.id,
+      'userType': user.userType,
+      'email': user.email,
+    });
+  }
 
   Future<void> createEmergency(Emergency emergency) async {
     await _db.collection('emergencies').add({

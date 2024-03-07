@@ -5,6 +5,7 @@ import 'package:nurse_call_alarm/screen/login_screen.dart';
 import 'package:nurse_call_alarm/screen/patient_screen.dart';
 import 'package:nurse_call_alarm/screen/register_screen.dart';
 
+import 'controllers/auth_controller.dart';
 import 'controllers/nurse_controller.dart';
 import 'controllers/patient_controller.dart';
 import 'screen/nurse_screen.dart';
@@ -16,15 +17,22 @@ Future<void> main() async {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp();
+  const MyApp({Key? key}) : super(key: key);
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
       initialRoute: '/',
       getPages: [
-        GetPage(name: '/', page: () => LoginScreen()),
+        GetPage(
+          name: '/',
+          page: () => LoginScreen(),
+          binding: BindingsBuilder(() {
+            Get.put<AuthController>(AuthController());
+          }),
+        ),
         GetPage(name: '/register', page: () => RegisterScreen()),
         GetPage(
           name: '/patient',
