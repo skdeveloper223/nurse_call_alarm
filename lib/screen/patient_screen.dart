@@ -1,15 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-class PatientScreen extends StatefulWidget {
-  const PatientScreen({Key? key}) : super(key: key);
+import '../controllers/patient_controller.dart';
 
-  @override
-  State<PatientScreen> createState() => _PatientScreenState();
-}
+class PatientScreen extends StatelessWidget {
+  final PatientController controller = Get.put(PatientController());
 
-class _PatientScreenState extends State<PatientScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(title: Text('Patient Home')),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ElevatedButton(
+              onPressed: () => controller.createEmergency('Emergency Type', 'Emergency Details'),
+              child: Text('Generate Emergency'),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }

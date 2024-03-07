@@ -15,7 +15,11 @@ class AuthController extends GetxController {
 
   void signIn() async {
     try {
-      await _auth.signInWithEmailAndPassword(email: email!, password: password!);
+      final result = await _auth.signInWithEmailAndPassword(email: email!, password: password!);
+      if (result == null) {
+        Get.toNamed("/patient");
+      }
+      Get.toNamed("/patient");
     } catch (e) {
       Get.snackbar('Error', e.toString(), snackPosition: SnackPosition.BOTTOM);
     }

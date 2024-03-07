@@ -5,6 +5,8 @@ import 'package:nurse_call_alarm/screen/login_screen.dart';
 import 'package:nurse_call_alarm/screen/patient_screen.dart';
 import 'package:nurse_call_alarm/screen/register_screen.dart';
 
+import 'controllers/nurse_controller.dart';
+import 'controllers/patient_controller.dart';
 import 'screen/nurse_screen.dart';
 
 Future<void> main() async {
@@ -24,8 +26,20 @@ class MyApp extends StatelessWidget {
       getPages: [
         GetPage(name: '/', page: () => LoginScreen()),
         GetPage(name: '/register', page: () => RegisterScreen()),
-        GetPage(name: '/patient', page: () => PatientScreen()),
-        GetPage(name: '/nurse', page: () => NurseScreen()),
+        GetPage(
+          name: '/patient',
+          page: () => PatientScreen(),
+          binding: BindingsBuilder(() {
+            Get.put<PatientController>(PatientController());
+          }),
+        ),
+        GetPage(
+          name: '/nurse',
+          page: () => NurseScreen(),
+          binding: BindingsBuilder(() {
+            Get.put<NurseController>(NurseController());
+          }),
+        ),
       ],
     );
   }
