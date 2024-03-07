@@ -10,7 +10,7 @@ class HistoryScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Call History')),
+      appBar: AppBar(title: const Text('History')),
       body: Obx(
         () => controller.histories.isEmpty
             ? const Center(

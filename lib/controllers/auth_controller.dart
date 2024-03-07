@@ -31,9 +31,11 @@ class AuthController extends GetxController {
 
   void signIn() async {
     try {
-      final result = await _auth.signInWithEmailAndPassword(email: email!, password: password!);
+      final result = await _auth.signInWithEmailAndPassword(
+          email: email!, password: password!);
       print(result.toString());
-      Get.snackbar('Success', "Login Successfully", snackPosition: SnackPosition.BOTTOM);
+      Get.snackbar('Success', "Login Successfully",
+          snackPosition: SnackPosition.BOTTOM);
       navigateScreen();
     } catch (e) {
       Get.snackbar('Error', e.toString(), snackPosition: SnackPosition.BOTTOM);
@@ -42,13 +44,18 @@ class AuthController extends GetxController {
 
   void register() async {
     try {
-      final result = await _auth.createUserWithEmailAndPassword(email: email!.trim(), password: password!);
+      final result = await _auth.createUserWithEmailAndPassword(
+          email: email!.trim(), password: password!);
       await _auth.currentUser!.updateDisplayName(userType!);
       print(result.toString());
       print("result" + _auth.currentUser!.displayName.toString());
-      UserModel userModel = UserModel(id: _auth.currentUser!.uid, userType: userType!, email: email!.trim());
+      UserModel userModel = UserModel(
+          id: _auth.currentUser!.uid,
+          userType: userType!,
+          email: email!.trim());
       await _db.createUser(userModel);
-      Get.snackbar('Success', "Register Successfully", snackPosition: SnackPosition.BOTTOM);
+      Get.snackbar('Success', "Register Successfully",
+          snackPosition: SnackPosition.BOTTOM);
       navigateScreen();
     } catch (e) {
       Get.snackbar('Error', e.toString(), snackPosition: SnackPosition.BOTTOM);

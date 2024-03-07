@@ -11,7 +11,7 @@ class NurseController extends GetxController {
   get auth => _authController;
 
   RxList<Emergency> emergencies = <Emergency>[].obs;
-  final AudioPlayer audioplayer = AudioPlayer();
+  final audioplayer = AudioPlayer();
   @override
   void onInit() {
     super.onInit();
@@ -21,7 +21,6 @@ class NurseController extends GetxController {
   void fetchEmergencies() async {
     _db.streamEmergencies().listen((data) {
       audioplayer.setAsset("sound/noti.mp3");
-      audioplayer.setClip(start: Duration(seconds: 0), end: Duration(seconds: 60));
       audioplayer.play();
       emergencies.value = data.cast<Emergency>();
     });
@@ -29,7 +28,7 @@ class NurseController extends GetxController {
   }
 
   void markEmergencyAsAttended(String emergencyId) {
-    audioplayer.pause();
+    audioplayer.stop();
     String nurseId = _authController.firebaseUser.value!.uid;
     _db.markEmergencyAsAttended(emergencyId, nurseId);
     Get.snackbar('Success', "Patient Attended", snackPosition: SnackPosition.BOTTOM);

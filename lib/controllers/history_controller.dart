@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:nurse_call_alarm/models/emergency.dart';
 
@@ -6,22 +7,23 @@ import 'auth_controller.dart';
 
 class HistoryController extends GetxController {
   final DatabaseService _db = DatabaseService();
-  final AuthController _authController = Get.put<AuthController>(AuthController());
-  get auth => _authController;
-
   RxList<Emergency> histories = <Emergency>[].obs;
 
-  @override
-  void onInit() {
-    super.onInit();
-    fetchHistories();
+  void fetchHistories() async {
+    try {
+      String nurseId = FirebaseAuth.instance.currentUser!.uid;
+      _db.streamHistories(nurseId).listen((data) {
+        histories.value = data.cast<Emergency>();
+      });
+    } catch (e) {
+      print("oooooooooooppoooopppp " + e.toString());
+    }
   }
 
-  void fetchHistories() async {
-    String nurseId = _authController.firebaseUser.value!.uid;
-    _db.streamHistories(nurseId).listen((data) {
-      histories.value = data.cast<Emergency>();
-    });
-    print(histories.toString());
+  @override
+  void onReady() {
+    fetchHistories();
+    // TODO: implement onReady
+    super.onReady();
   }
 }

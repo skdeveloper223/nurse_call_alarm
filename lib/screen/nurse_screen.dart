@@ -23,7 +23,9 @@ class NurseScreen extends StatelessWidget {
       body: Column(
         children: [
           ElevatedButton(
-            onPressed: () => Get.toNamed("/history"),
+            onPressed: () {
+              Get.toNamed("/history");
+            },
             child: const Text('History'),
           ),
           Expanded(
