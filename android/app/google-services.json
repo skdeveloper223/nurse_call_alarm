@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "709745896230",
+    "project_id": "nursecallalarm",
+    "storage_bucket": "nursecallalarm.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:709745896230:android:a6c91fddb16488c7cbefe7",
+        "android_client_info": {
+          "package_name": "com.nurse.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAooSDfMf8BDi15CNfP30xgwjrfaqSpUoQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
