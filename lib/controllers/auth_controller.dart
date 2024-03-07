@@ -16,9 +16,8 @@ class AuthController extends GetxController {
   void signIn() async {
     try {
       final result = await _auth.signInWithEmailAndPassword(email: email!, password: password!);
-      if (result == null) {
-        Get.toNamed("/patient");
-      }
+      print(result.toString());
+      Get.snackbar('Success', "Login Successfully", snackPosition: SnackPosition.BOTTOM);
       Get.toNamed("/patient");
     } catch (e) {
       Get.snackbar('Error', e.toString(), snackPosition: SnackPosition.BOTTOM);
@@ -27,8 +26,11 @@ class AuthController extends GetxController {
 
   void register() async {
     try {
-      await _auth.createUserWithEmailAndPassword(email: email!, password: password!);
+      final result = await _auth.createUserWithEmailAndPassword(email: email!, password: password!);
       await _auth.currentUser!.updateDisplayName(userType!);
+      print(result.toString());
+      Get.snackbar('Success', "Register Successfully", snackPosition: SnackPosition.BOTTOM);
+      Get.toNamed("/nurse");
     } catch (e) {
       Get.snackbar('Error', e.toString(), snackPosition: SnackPosition.BOTTOM);
     }

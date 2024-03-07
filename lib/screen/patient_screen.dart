@@ -15,7 +15,7 @@ class PatientScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             ElevatedButton(
-              onPressed: () => controller.createEmergency('Emergency Type', 'Emergency Details'),
+              onPressed: () => controller.createEmergency('Emergency Type', controller.auth.firebase.value.name),
               child: Text('Generate Emergency'),
             ),
           ],

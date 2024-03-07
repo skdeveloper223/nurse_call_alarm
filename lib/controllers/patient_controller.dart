@@ -7,10 +7,13 @@ import 'auth_controller.dart';
 class PatientController extends GetxController {
   final DatabaseService _db = DatabaseService();
   final AuthController _authController = Get.find();
+  get auth => _authController;
 
   Future<void> createEmergency(String type, String details) async {
     String userId = _authController.firebaseUser.value!.uid;
+    print(_authController.firebaseUser.value.toString());
     Emergency emergency = Emergency(userId: userId, type: type, details: details);
     await _db.createEmergency(emergency);
+    Get.snackbar('Emergency', "Send Successfully", snackPosition: SnackPosition.BOTTOM);
   }
 }
